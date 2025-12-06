@@ -40,6 +40,7 @@
 
 #pragma once
 
+#include "keycodes.h"
 #include "quantum.h"
 
 /**
@@ -57,7 +58,7 @@
  *       return true;
  *     }
  */
-bool process_orbital_mouse(uint16_t keycode, keyrecord_t* record);
+bool process_orbital_mouse(uint16_t keycode, keyrecord_t *record);
 
 /**
  * Matrix task function for Orbital Mouse.
@@ -80,7 +81,7 @@ void orbital_mouse_task(void);
  * @param speed_curve Pointer to an array of size 16. If NULL, the speed curve
  *                    defined by ORBITAL_MOUSE_SPEED_CURVE is set.
  */
-void set_orbital_mouse_speed_curve(const uint8_t* speed_curve);
+void set_orbital_mouse_speed_curve(const uint8_t *speed_curve);
 
 /**
  * Gets the heading direction as a value in 0-63.
@@ -107,43 +108,43 @@ void set_orbital_mouse_angle(uint8_t angle);
 // input of ASCII characters, which seems unlikely to be missed.
 enum {
     /** Move forward. */
-    OM_U = KC_MS_U,
+    OM_U = MS_UP,
     /** Move backward. */
-    OM_D = KC_MS_D,
+    OM_D = MS_DOWN,
     /** Steer left (counter-clockwise). */
-    OM_L = KC_MS_L,
+    OM_L = MS_LEFT,
     /** Steer right (clockwise). */
-    OM_R = KC_MS_R,
+    OM_R = MS_RGHT,
     /** Mouse wheel up. */
-    OM_W_U = KC_WH_U,
+    OM_W_U = QK_MOUSE_WHEEL_UP,
     /** Mouse wheel down. */
-    OM_W_D = KC_WH_D,
+    OM_W_D = QK_MOUSE_WHEEL_DOWN,
     /** Mouse wheel left. */
-    OM_W_L = KC_WH_L,
+    OM_W_L = QK_MOUSE_WHEEL_LEFT,
     /** Mouse wheel right. */
-    OM_W_R = KC_WH_R,
+    OM_W_R = QK_MOUSE_WHEEL_RIGHT,
     /** Press mouse button 1. */
-    OM_BTN1 = KC_BTN1,
+    OM_BTN1 = MS_BTN1,
     /** Press mouse button 2. */
-    OM_BTN2 = KC_BTN2,
+    OM_BTN2 = MS_BTN2,
     /** Press mouse button 3. */
-    OM_BTN3 = KC_BTN3,
+    OM_BTN3 = MS_BTN3,
     /** Press mouse button 4. */
-    OM_BTN4 = KC_BTN4,
+    OM_BTN4 = MS_BTN4,
     /** Press mouse button 5. */
-    OM_BTN5 = KC_BTN5,
+    OM_BTN5 = MS_BTN5,
     /** Press mouse button 6. */
-    OM_BTN6 = KC_BTN6,
+    OM_BTN6 = MS_BTN6,
     /** Press mouse button 7. */
-    OM_BTN7 = KC_BTN7,
+    OM_BTN7 = MS_BTN7,
     /** Press mouse button 8. */
-    OM_BTN8 = KC_BTN8,
+    OM_BTN8 = MS_BTN8,
     /** Press the selected mouse button. */
-    OM_BTNS = KC_ACL0,
+    OM_BTNS = MS_ACL0,
     /** Hold the selected mouse button. */
-    OM_HLDS = KC_ACL1,
+    OM_HLDS = MS_ACL1,
     /** Release the selected mouse button. */
-    OM_RELS = KC_ACL2,
+    OM_RELS = MS_ACL2,
     /** Double click the selected mouse button. */
     OM_DBLS = UC(0x41),
     /** Select mouse button 1. */

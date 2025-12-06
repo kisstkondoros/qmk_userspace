@@ -1,3 +1,7 @@
 {
-    "modules": ["getreuer/palettefx", "getreuer/orbital_mouse"]
+    "modules": [
+        "getreuer/lumino",
+        "getreuer/palettefx",
+        "getreuer/orbital_mouse"
+    ]
 }

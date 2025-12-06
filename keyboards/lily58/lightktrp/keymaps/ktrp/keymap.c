@@ -1,6 +1,7 @@
 #include "quantum.h"
 #include QMK_KEYBOARD_H
 #include "keymap_hungarian.h"
+#include "modules/getreuer/orbital_mouse/orbital_mouse.h"
 
 #include "layers.h"
 #include "oled/temperature.h"

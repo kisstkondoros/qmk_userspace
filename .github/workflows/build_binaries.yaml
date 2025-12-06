@@ -12,6 +12,7 @@ jobs:
     with:
       qmk_repo: qmk/qmk_firmware
       qmk_ref: master
+      preparation_command: './prepare_ci.sh'
 
   publish:
     name: 'QMK Userspace Publish'

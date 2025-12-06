@@ -117,11 +117,7 @@ void matrix_init_user(void) {
     init_temp_sensor();
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    process_record_user_send_state_over_raw_hid(keycode, record);
-    process_record_user_oled(keycode, record);
-    process_record_user_state(keycode, record);
-
+void process_record_user_underglow_mode(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case U_GLOW:
             if (record->event.pressed) {
@@ -131,7 +127,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         default:
             break;
     }
+}
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    process_record_user_send_state_over_raw_hid(keycode, record);
+    process_record_user_oled(keycode, record);
+    process_record_user_state(keycode, record);
+    process_record_user_underglow_mode(keycode, record);
     return true;
 }
 

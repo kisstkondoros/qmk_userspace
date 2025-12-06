@@ -8,5 +8,3 @@ SRC += ./oled/oled_stuff.c
 SRC += ./state/state.c
 SRC += ./state/send_keys_raw_hid.c
 SRC += ./rgb_matrix/rgb_matrix_user.c
-
-SRC += features/orbital_mouse.c

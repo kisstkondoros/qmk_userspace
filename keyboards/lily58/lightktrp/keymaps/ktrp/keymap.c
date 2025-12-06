@@ -8,7 +8,6 @@
 #include "state/state.h"
 #include "state/send_keys_raw_hid.h"
 #include "rgb_matrix/rgb_matrix_user.h"
-#include "features/orbital_mouse.h"
 
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
@@ -117,16 +116,8 @@ void matrix_init_user(void) {
     init_temp_sensor();
 }
 
-void matrix_scan_user(void) {
-    orbital_mouse_task();
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_user_send_state_over_raw_hid(keycode, record);
-    if (!process_orbital_mouse(keycode, record)) {
-        return false;
-    }
-
     process_record_user_oled(keycode, record);
     process_record_user_state(keycode, record);
 

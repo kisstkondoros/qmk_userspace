@@ -13,7 +13,7 @@
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
-enum custom_keycodes { UG_CMOD = QK_USER };
+enum custom_keycodes { U_GLOW = QK_USER };
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                    |LUMINO|      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|UG_CMOD|      |      | HUE+ | SAT+ | VAL+ |
+ * |      |      |      |      |      |      |-------.    ,-------|U_GLOW|      |      | HUE+ | SAT+ | VAL+ |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------| MODE |      |      | HUE- | SAT- | VAL- |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_ADJUST] = LAYOUT(
   QK_BOOT, QK_RBT , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   LUMINO , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   UG_CMOD, XXXXXXX, XXXXXXX, RM_HUEU, RM_SATU, RM_VALU,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   U_GLOW, XXXXXXX, XXXXXXX, RM_HUEU, RM_SATU, RM_VALU,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RM_NEXT, XXXXXXX, XXXXXXX, RM_HUED, RM_SATD, RM_VALD,
                              _______, _______, _______, _______, _______,  _______, _______, _______
   )
@@ -123,7 +123,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_user_state(keycode, record);
 
     switch (keycode) {
-        case UG_CMOD:
+        case U_GLOW:
             if (record->event.pressed) {
                 user_state.selectedEffect = (user_state.selectedEffect + 1) % 5;
             }

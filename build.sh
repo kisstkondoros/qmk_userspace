@@ -1,0 +1,1 @@
+qmk userspace-compile -p

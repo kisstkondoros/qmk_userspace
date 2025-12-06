@@ -25,12 +25,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MASTER_LEFT
 
-#define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SPLASH // Static single hue, value pulse away from multiple key hits then fades value out
-                                                // The animation uses these two defines in order to allow customization:
-
-#define SOLID_REACTIVE_SPLASH_WAVE_RGB 0xE6CD12 // light yellow-ish
-#define SOLID_REACTIVE_SPLASH_WAVE_WIDTH 50     // ~4 keys wide
-
 #define SPLIT_TRANSACTION_IDS_USER USER_SYNC_A
 
 /**======================
@@ -63,6 +57,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET              // Activates the double-tap behavior
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U // Timeout window in ms in which the double tap can occur.
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17     // Specify a optional status led by GPIO number which blinks when entering the bootloader
-
-#define PALETTEFX_ENABLE_ALL_EFFECTS
-#define PALETTEFX_ENABLE_ALL_PALETTES

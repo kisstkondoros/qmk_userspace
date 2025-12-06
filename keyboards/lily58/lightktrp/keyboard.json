@@ -39,7 +39,7 @@
         }
     },
     "ws2812": {
-		"driver": "vendor",
+        "driver": "vendor",
         "pin": "GP0"
     },
     "layouts": {
@@ -120,7 +120,7 @@
         "sleep": true,
         "timeout": 90000,
         "react_on_keyup": true,
-        "split_count": [35,35],
+        "split_count": [35, 35],
         "max_brightness": 175,
         "animations": {
             "alphas_mods": true,
@@ -170,10 +170,7 @@
             "splash": true,
             "multisplash": true,
             "solid_splash": true,
-            "solid_multisplash": true,
-            "pixel_flame": true,
-            "palettes": true,
-            "custom_user": true
+            "solid_multisplash": true
         },
         "layout": [
             { "flags": 2, "x": 57, "y": 9 },

@@ -19,7 +19,9 @@ void rgb_matrix_init_user() {
     for (uint8_t row = 0; row < MATRIX_ROWS; row++) {
         for (uint8_t col = 0; col < MATRIX_COLS; col++) {
             uint8_t led_index = g_led_config.matrix_co[row][col];
-            if (led_index != NO_LED) led_index_key_position[led_index] = (keypos_t){.row = row, .col = col};
+            if (led_index != NO_LED) {
+                led_index_key_position[led_index] = (keypos_t){.row = row, .col = col};
+            }
         }
     }
 }

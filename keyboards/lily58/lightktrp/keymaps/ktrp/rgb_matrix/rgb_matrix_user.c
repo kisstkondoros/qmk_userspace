@@ -40,17 +40,6 @@ void rgb_matrix_init_user() {
     }
 }
 
-void rgb_matrix_set_color_by_keycode(uint8_t led_min, uint8_t led_max, uint8_t layer, bool (*is_keycode)(uint16_t), uint8_t red, uint8_t green, uint8_t blue) {
-    for (uint8_t i = led_min; i < led_max; i++) {
-        uint16_t keycode = keymap_key_to_keycode(layer, led_index_key_position[i]);
-        if ((*is_keycode)(keycode)) rgb_matrix_set_color(i, red, green, blue);
-    }
-}
-
-keypos_t rgb_matrix_get_position(uint8_t led_index) {
-    return led_index_key_position[led_index];
-}
-
 uint8_t lastActiveLayer = 0;
 
 void set_indicator_colors(uint8_t led_min, uint8_t led_max, uint8_t r, uint8_t g, uint8_t b) {

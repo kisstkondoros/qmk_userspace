@@ -42,17 +42,6 @@ void rgb_matrix_init_user() {
 
 uint8_t lastActiveLayer = 0;
 
-void set_indicator_colors(uint8_t led_min, uint8_t led_max, uint8_t r, uint8_t g, uint8_t b) {
-    for (uint8_t i = led_min; i < led_max; i++) {
-        if (g_led_config.flags[i] == LED_FLAG_UNDERGLOW) {
-            rgb_matrix_set_color(i, r, g, b);
-        }
-        if (g_led_config.flags[i] == LED_FLAG_INDICATOR) {
-            rgb_matrix_set_color(i, r >> 4, g >> 4, b >> 4);
-        }
-    }
-}
-
 static HSV effect_solid(HSV hsv, uint8_t index, uint32_t timer, uint8_t speed) {
     return hsv;
 }

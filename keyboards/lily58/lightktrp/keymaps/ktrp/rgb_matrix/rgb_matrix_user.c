@@ -26,43 +26,6 @@ double threeway_min(double a, double b, double c) {
     return min(a, min(b, c));
 }
 
-RGB rgb(uint8_t r, uint8_t g, uint8_t b) {
-    RGB rgb;
-    rgb.r = r;
-    rgb.g = g;
-    rgb.b = b;
-    return rgb;
-}
-
-HSV rgb_to_hsv(RGB rgb) {
-    double rd  = (double)rgb.r / 255;
-    double gd  = (double)rgb.g / 255;
-    double bd  = (double)rgb.b / 255;
-    double max = threeway_max(rd, gd, bd), min = threeway_min(rd, gd, bd);
-    double h, s, v = max;
-
-    double d = max - min;
-    s        = max == 0 ? 0 : d / max;
-
-    if (max == min) {
-        h = 0; // achromatic
-    } else {
-        if (max == rd) {
-            h = (gd - bd) / d + (gd < bd ? 6 : 0);
-        } else if (max == gd) {
-            h = (bd - rd) / d + 2;
-        } else if (max == bd) {
-            h = (rd - gd) / d + 4;
-        }
-        h /= 6;
-    }
-    h *= 255;
-    s *= 255;
-    v *= 255;
-
-    return (HSV){(int)h, (int)s, (int)v};
-}
-
 /*
  * Initialise RGB matrix; invert the mapping of g_led_config.matrix_co,
  * so instead of a mapping from key position to led index, we now create

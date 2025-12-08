@@ -10,22 +10,6 @@
 
 keypos_t led_index_key_position[RGB_MATRIX_LED_COUNT];
 
-double max(double a, double b) {
-    return a > b ? a : b;
-}
-
-double min(double a, double b) {
-    return a < b ? a : b;
-}
-
-double threeway_max(double a, double b, double c) {
-    return max(a, max(b, c));
-}
-
-double threeway_min(double a, double b, double c) {
-    return min(a, min(b, c));
-}
-
 /*
  * Initialise RGB matrix; invert the mapping of g_led_config.matrix_co,
  * so instead of a mapping from key position to led index, we now create

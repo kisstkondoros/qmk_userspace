@@ -13,8 +13,6 @@
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
-enum custom_keycodes { U_GLOW = QK_USER };
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -115,18 +113,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void matrix_init_user(void) {
     rgb_matrix_init_user();
     init_temp_sensor();
-}
-
-void process_record_user_underglow_mode(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case U_GLOW:
-            if (record->event.pressed) {
-                user_state.selectedEffect = (user_state.selectedEffect + 1) % 5;
-            }
-            break;
-        default:
-            break;
-    }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

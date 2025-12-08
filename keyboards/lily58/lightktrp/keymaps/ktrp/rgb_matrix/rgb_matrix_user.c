@@ -6,7 +6,8 @@
 #    include "action_layer.h"
 
 #    include "rgb_matrix_user.h"
-#    include "../state/state.h"
+#    include "state/state.h"
+#    include "keycodes.h"
 
 keypos_t led_index_key_position[RGB_MATRIX_LED_COUNT];
 
@@ -112,5 +113,17 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     }
 
     return false;
+}
+
+void process_record_user_underglow_mode(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case U_GLOW:
+            if (record->event.pressed) {
+                user_state.selectedEffect = (user_state.selectedEffect + 1) % 5;
+            }
+            break;
+        default:
+            break;
+    }
 }
 #endif

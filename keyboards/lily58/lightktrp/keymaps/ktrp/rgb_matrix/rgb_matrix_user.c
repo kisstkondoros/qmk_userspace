@@ -40,8 +40,6 @@ void rgb_matrix_init_user() {
     }
 }
 
-uint8_t lastActiveLayer = 0;
-
 static HSV effect_solid(HSV hsv, uint8_t index, uint32_t timer, uint8_t speed) {
     return hsv;
 }

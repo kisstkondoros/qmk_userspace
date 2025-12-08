@@ -54,18 +54,10 @@ static HSV effect_riverflow(HSV hsv, uint8_t index, uint32_t timer, uint8_t spee
     return hsv;
 }
 
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    if (rgb_matrix_get_suspend_state()) {
-        return false;
-    }
-    uint8_t layer = get_highest_layer(layer_state);
+typedef HSV (*EffectFunction)(HSV, uint8_t, uint32_t, uint8_t);
 
-    bool isDefaultLayer = layer == 0;
-
-    uint8_t  speed = rgb_matrix_config.speed;
-    uint32_t timer = g_rgb_timer;
-
-    HSV (*effect)(HSV, uint8_t, uint32_t, uint8_t);
+static EffectFunction getEffectFunction(void) {
+    EffectFunction effect;
     switch (user_state.selectedEffect % 5) {
         case 0:
             effect = &effect_riverflow;
@@ -87,17 +79,33 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             effect = &effect_solid;
             break;
     }
+
+    return effect;
+}
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (rgb_matrix_get_suspend_state()) {
+        return false;
+    }
+
+    EffectFunction effect         = getEffectFunction();
+    uint8_t        layer          = get_highest_layer(layer_state);
+    bool           isDefaultLayer = layer == 0;
+    uint8_t        speed          = rgb_matrix_config.speed;
+    uint32_t       timer          = g_rgb_timer;
+    HSV            hsv            = rgb_matrix_config.hsv;
+
+    if (!isDefaultLayer) {
+        hsv.h += 42 * layer;
+    }
+
     for (uint8_t index = led_min; index < led_max; index++) {
-        if ((index >= led_min) && (index < led_max) && (index != NO_LED)) {
-            HSV hsv = rgb_matrix_config.hsv;
+        if (index != NO_LED) {
+            bool isUnderglow      = g_led_config.flags[index] == LED_FLAG_UNDERGLOW;
+            bool overrideKeyColor = !isUnderglow && !isDefaultLayer && keymap_key_to_keycode(layer, led_index_key_position[index]) > KC_TRNS;
 
-            if (!isDefaultLayer) {
-                hsv.h += 42 * layer;
-            }
-
-            RGB rgb = hsv_to_rgb((*effect)(hsv, index, timer, speed));
-
-            if (g_led_config.flags[index] == LED_FLAG_UNDERGLOW || (!isDefaultLayer && keymap_key_to_keycode(layer, led_index_key_position[index]) > KC_TRNS)) {
+            if (isUnderglow || overrideKeyColor) {
+                RGB rgb = hsv_to_rgb(effect(hsv, index, timer, speed));
                 rgb_matrix_set_color(index, rgb.r, rgb.g, rgb.b);
             }
         }

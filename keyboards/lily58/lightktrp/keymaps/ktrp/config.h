@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#define RAW_HID_SEND_KEYS_ENABLED false
+// #define RAW_HID_SEND_KEYS_ENABLED
 
 #define MASTER_LEFT
 

@@ -7,7 +7,7 @@
 
 #    include "rgb_matrix_user.h"
 #    include "state/state.h"
-#    include "keycodes.h"
+#    include "custom_keycodes.h"
 
 keypos_t led_index_key_position[RGB_MATRIX_LED_COUNT];
 

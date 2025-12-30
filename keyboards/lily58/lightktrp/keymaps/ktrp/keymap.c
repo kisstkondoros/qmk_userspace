@@ -1,8 +1,6 @@
-#include "keycodes.h"
-#include "quantum.h"
 #include QMK_KEYBOARD_H
+#include "custom_keycodes.h"
 #include "keymap_hungarian.h"
-#include "modules/getreuer/orbital_mouse/orbital_mouse.h"
 
 #include "layers.h"
 #include "oled/temperature.h"
@@ -10,6 +8,8 @@
 #include "state/state.h"
 #include "state/send_keys_raw_hid.h"
 #include "rgb_matrix/rgb_matrix_user.h"
+
+#include "modules/getreuer/orbital_mouse/orbital_mouse.h"
 
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)

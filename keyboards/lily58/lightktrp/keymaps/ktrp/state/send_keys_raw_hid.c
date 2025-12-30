@@ -1,6 +1,4 @@
-#include "raw_hid.h"
-#include "action_layer.h"
-
+#include "action.h"
 typedef enum {
     _KEY_EVENT = 0xAA, // avoid conflict with VIA
     _lAYER_EVENT
